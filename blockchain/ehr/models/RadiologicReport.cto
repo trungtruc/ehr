@@ -1,0 +1,31 @@
+namespace org.uit.ehr.RadiologicReport
+
+concept RadiologicReport {
+  // o String patientId
+  // o String doctorId
+  o String radiologicImageId
+  o Exam exam 
+  o String clinicalHistory
+  // o Comparison comparison //giong exam
+  o String technique
+  o String findings
+  o String impression
+}
+
+concept Comparison {//cho nay giong voi exam 
+  o ExamType examType 
+  o String date 
+}
+
+concept Exam {
+  o ExamType examType 
+  o String dateOfExam
+}
+
+enum ExamType {
+  o MRI
+  o CT
+  o Ultrasound
+  o NuclearMedicine
+  o Xray
+}

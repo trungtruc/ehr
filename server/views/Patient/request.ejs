@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <title>Health Record</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid body-content">
+        <nav class="nav nav-pills nav-justified nav-top">
+            <div class="col-md-4">
+                <a href="/home" class="navbar-brand">
+                    <img src="../imgs/banner.png" alt="" class="d-inline-block align-top" width="80%" height="80%">
+                </a>
+            </div>
+        </nav>
+
+        <div class="row main-content" style="background: #424242">
+            <div class="col-lg-2 nav-left">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/healthrecord">Health Record</a></li>
+                    <li class="active"><a href="/request">Request</a></li>
+                    <!-- <li><a href="/patient">Patients</a></li> -->
+                    <li><a href="/doctor">Doctors</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-10 aside" style="background: #ffffff; padding: 40px">
+                <div class="row request-area">
+                    <ul class="nav nav-pills mb-3 col-md-10" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="pills-pending-tab" data-toggle="pill" href="#pills-pending"
+                                role="tab" aria-controls="pills-pending" aria-selected="true"
+                                style="border: none; font-weight: bold">
+                                Pending</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-sharing-tab" data-toggle="pill" href="#pills-sharing"
+                                role="tab" aria-controls="pills-sharing" aria-selected="false"
+                                style="border: none; font-weight: bold">
+                                Sharing</a>
+                        </li>
+                    </ul>
+                    <div class="col-md-2" id="create-button">
+                        <a href="/request/create" class="btn btn-primary" style="font-weight: bold">Create
+                            request</a>
+                    </div>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-pending" role="tabpanel"
+                            aria-labelledby="pills-pending-tab" style="background-color: #ffffff">
+                            <table id="requests">
+                                <tr>
+                                    <th>Request ID</th>
+                                    <th>Resource ID</th>
+                                    <th>Resource Type</th>
+                                    <th>Created At</th>
+                                    <th>Request Owner</th>
+                                    <th>Resource Owner</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                                <% allRequests.forEach(function(request){ %>
+									<%if (request.requestStatus !== "Accepted") { %>
+									<tr class="request-item">
+										<td class="request-id"><%= request.requestID %></td>
+										<td><%= request.resourceID %></td>
+										<td><%= request.resourceType %></td>
+										<td><%= request.createdAt %></td>
+										<td><%= request.owner %></td>
+										<td><%= request.resourceOwner %></td>
+										<td><%= request.requestStatus %></td>
+										<td><i class="fas fa-check-square accept"></i> <i class="fas fa-times deny"></i>
+										</td>
+									</tr>
+									<% } %>
+                                <% }) %>
+                                <!-- <tr class="request-item"> -->
+                                    <!-- <td class="request-id">2</td> -->
+                                    <!-- <td>4</td> -->
+                                    <!-- <td>5</td> -->
+                                    <!-- <td>6</td> -->
+                                    <!-- <td>7</td> -->
+                                    <!-- <td>8</td> -->
+                                    <!-- <td>9</td> -->
+                                    <!-- <td><i class="fas fa-check-square accept"></i> <i class="fas fa-times deny"></i> -->
+                                    <!-- </td> -->
+                                <!-- </tr> -->
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="pills-sharing" role="tabpanel"
+                            aria-labelledby="pills-sharing-tab" style="background-color: #ffffff">
+                            <table id="requests">
+                                <tr>
+                                    <th>Request ID</th>
+                                    <th>Resource ID</th>
+                                    <th>Resource Type</th>
+                                    <th>Created At</th>
+                                    <th>Request Owner</th>
+                                    <th>Resource Owner</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                                <% allRequests.forEach(function(request){ %>
+									<%if (request.requestStatus === "Accepted") { %>
+									<tr class="request-item">
+										<td class="request-id"><%= request.requestID %></td>
+										<td><%= request.resourceID %></td>
+										<td><%= request.resourceType %></td>
+										<td><%= request.createdAt %></td>
+										<td><%= request.owner %></td>
+										<td><%= request.resourceOwner %></td>
+										<td><%= request.requestStatus %></td>
+										<td><button class="btn btn-danger revoke">Revoke</button></td>
+									</tr>
+									<% } %>
+                                <% }) %>
+								<td>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/fe382da393.js" crossorigin="anonymous"></script>
+	<script src="../scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        const acceptButton = document.querySelectorAll('.accept');
+        const denyButton = document.querySelectorAll('.deny');
+        const buttons = [
+            ...document.querySelectorAll('.accept'),
+            ...document.querySelectorAll('.deny'),
+            ...document.querySelectorAll('.revoke')
+        ]
+
+        buttons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const requestItem = event.target.parentNode.parentNode;
+                const requestId = requestItem.querySelector('.request-id').textContent;
+                // console.log(requestId)
+                var selectedButton = event.target.className.split(" ")[2];
+                if (selectedButton === "accept") {
+                    acceptRequest(requestId);
+                } else if (selectedButton === "deny") {
+                    denyRequest(requestId);
+                } else if (selectedButton === "revoke") {
+                    revokeRequest(requestId);
+                }
+
+            })
+        })
+    </script>
+    <script type="text/javascript">
+        function acceptRequest(id) {
+            var data = { requestID: id };
+            $.ajax({
+            	url  : '/request/accept',
+            	method : "POST",
+            	data : data,
+            	success : function(d){
+                    alert("Success!");
+                    window.location.reload();
+            	}
+            });
+
+        }
+
+        function denyRequest(id) {
+            var data = { requestID: id };
+            $.ajax({
+            	url  : '/request/delete',
+            	method : "POST",
+            	data : data,
+            	success : function(d){
+                    alert("Success!");
+                    window.location.reload();
+            	}
+            });
+        }
+
+        function revokeRequest(id) {
+            var data = { requestID: id };
+            $.ajax({
+            	url  : '/request/revoke',
+            	method : "POST",
+            	data : data,
+            	success : function(d){
+                    alert("Success!");
+                    window.location.reload();
+            	}
+            });
+        }
+    </script>
+</body>
+
+</html>

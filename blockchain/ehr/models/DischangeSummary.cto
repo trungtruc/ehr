@@ -1,0 +1,66 @@
+namespace org.uit.ehr.DischangeSummary
+
+concept DisSum {
+  // o String patientId
+  // o String doctorId
+  o AdmissionDetail admissionDetail
+  o DischargeDetail dischargeDetail
+  o ClinicalNarrative clinicalNarrative
+  o MedicationDetail medicationDetail
+}
+
+concept AdmissionDetail {
+  o String dateOfAdmission
+  o SourceOfReferral sourceOfReferral
+  o AdmissionMethod admissionMethod
+}
+
+concept DischargeDetail {
+  o String dateOfDischarge
+  o String dischargeMethod
+  o String patientStatus
+  o Boolean patientDied default=false
+  o String dateOfDead 
+  o String causeOfDead
+}
+
+concept ClinicalNarrative {
+  o String diagnoses
+  o String operationsAndProcedures
+  o String clinicalAlerts
+  o String allergies
+  o String adverseEvents
+  o String hospitalCourse
+  o String investigationsAndResult
+  o String treatments
+  o String diet
+  o String functionalState
+  o String immunisations
+  o String infectionControlStatus
+}
+
+concept MedicationDetail {
+  o Medication[] medicationOnDischarge
+  // o Medication[] medicationStopped
+}
+
+//in RadiologicReport.cto
+concept Medication {
+  o String medicationName
+  o String takenFor
+  o String direction
+}
+
+
+enum SourceOfReferral {
+  o SelfReferral
+  o AmbulanceService
+  o OutOfHoursService
+  o OtherHospital
+}
+
+enum AdmissionMethod {
+  o Elective
+  o Emergency
+  o Transfer
+}

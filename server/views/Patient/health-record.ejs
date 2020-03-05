@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="../scripts/axios.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700" rel="stylesheet">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <title>Health Record</title>
+</head>
+
+<body>
+    <div class="container-fluid body-content">
+        <nav class="nav nav-pills nav-justified nav-top">
+            <div class="col-md-4">
+                <a href="/home" class="navbar-brand">
+                    <img src="../imgs/banner.png" alt="" class="d-inline-block align-top" width="80%" height="80%">
+                </a>
+            </div>
+        </nav>
+
+        <div class="row main-content" style="background: #424242">
+            <div class="col-lg-2 nav-left">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li class="active"><a href="/healthrecord">Health Record</a></li>
+                    <li><a href="/request">Request</a></li>
+                    <li><a href="/doctor">Doctors</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-10 aside" style="background: #ffffff">
+                <div class="row" style="text-align: right; margin-top: 20px; padding-left: 20px">
+                    <form action="/healthrecord/CRH" method="get">
+                        
+                        <button class="btn btn-primary btn-create-record" type="submit" >Get records from Cho Ray
+                            Hospital</button>
+                    </form>
+                </div>
+                <div class="row table-header">
+                    <div class="col-sm-3">ID</div>
+                    <div class="col-sm-3">Patient ID</div>
+                    <div class="col-sm-3">Doctor ID</div>
+                    <div class="col-sm-3">Create at</div>
+                </div>
+                <% data.forEach(function(record){ %>
+                <div class="row health-record-item">
+                    <div class="col-sm-3"><%= record.healthRecordId %></div>
+                    <div class="col-sm-3"><%= record.owner %></div>
+                    <div class="col-sm-3"><%= record.doctorId %></div>
+                    <div class="col-sm-3">
+                        <div class="row">
+                            <div class="col-md-9"><%= record.createdAt %></div>
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-primary btn-detail">Detail</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row health-record-detail" style="display: none">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="pills-nursing-assessment-tab" data-toggle="pill"
+                                href="#pills-nursing-assessment" role="tab" aria-controls="pills-nursing-assessment"
+                                aria-selected="false" style="border: none; font-weight: bold">
+                                Nursing Assessment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-radiologic-report-tab" data-toggle="pill"
+                                href="#pills-radiologic-report" role="tab" aria-controls="pills-radiologic-report"
+                                aria-selected="false" style="border: none; font-weight: bold">
+                                Radiologic Report</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-discharge-summary-tab" data-toggle="pill"
+                                href="#pills-discharge-summary" role="tab" aria-controls="pills-discharge-summary"
+                                aria-selected="false" style="border: none; font-weight: bold">
+                                Discharge Summary</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-nursing-assessment" role="tabpanel"
+                            aria-labelledby="pills-nursing-assessment-tab" style="background-color: #ffffff">
+                            <strong><label for="">Allergies and Reactions</label></strong>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Drugs: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <label
+                                        for=""><% record.nursingAssessment.allergiesAndReactions.drugs.forEach(function(drug){ %>
+                                        <%= drug + ", " %>
+                                        <% })%></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Foods: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <label
+                                        for=""><% record.nursingAssessment.allergiesAndReactions.foods.forEach(function(food){ %>
+                                        <%= food + ", " %>
+                                        <% })%></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Other: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <label
+                                        for=""><% record.nursingAssessment.allergiesAndReactions.other.forEach(function(other){ %>
+                                        <%= other + ", " %>
+                                        <% })%></label>
+                                </div>
+                            </div>
+
+                            <strong><label for="">Communication</label></strong>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Language: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label
+                                        for=""><% record.nursingAssessment.communication.language.forEach(function(lang){ %>
+                                        <%= lang + ", " %>
+                                        <% })%></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Hearing difficult: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label
+                                        for=""><% if(record.nursingAssessment.communication.hearingDifficult === false) { %>
+                                        <%= "No" %>
+                                        <% } %>
+                                        <% if(record.nursingAssessment.communication.hearingDifficult === true) { %>
+                                        <%= "Yes" %>
+                                        <% } %>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Information obtained from: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label
+                                        for=""><%= record.nursingAssessment.communication.informationObtainedFrom %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Comments: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label for=""><%= record.nursingAssessment.communication.comment %></label>
+                                </div>
+                            </div>
+
+                            <strong><label for="">Vital signs</label></strong>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="">Height: </label>
+                                    <label for=""><%= record.nursingAssessment.vitalSigns.height %> cm</label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="">Weight:</label>
+                                    <label for=""><%= record.nursingAssessment.vitalSigns.weight %> kg</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Body temperature: </label>
+                                    <label for=""><%= record.nursingAssessment.vitalSigns.bodyTemperature %> </label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="">Pulse: </label>
+                                    <label for=""><%= record.nursingAssessment.vitalSigns.pulse %></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="">Breathing: </label>
+                                    <label for=""><%= record.nursingAssessment.vitalSigns.breathing %></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="">Blood pressure: </label>
+                                    <label for=""><%= record.nursingAssessment.vitalSigns.bloodPressure %></label>
+                                </div>
+                            </div>
+
+                            <strong><label for="">Neurological Assessment</label></strong>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Skin: </label>
+                                </div>
+                                <div class="col-sm-9" style="padding: 10px">
+                                    <label for=""><%= record.nursingAssessment.skin %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Cognitive function: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="row" style="padding: 0">
+                                        <div class="col-sm-3" style="padding: 0">
+                                            <label for="">Behaviour:</label>
+                                        </div>
+                                        <div class="col-sm-9" style="padding: 0">
+                                            <label
+                                                for=""><%= record.nursingAssessment.cognitiveFunction.behaviour %></label>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding: 0">
+                                        <div class="col-sm-3" style="padding: 0">
+                                            <label for="">Affect:</label>
+                                        </div>
+                                        <div class="col-sm-9" style="padding: 0">
+                                            <label
+                                                for=""><%= record.nursingAssessment.cognitiveFunction.affect %></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Respiratory Assessment: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="row" style="padding: 0">
+                                        <div class="col-sm-3" style="padding: 0">
+                                            <label for="">Shortness of breath:</label>
+                                        </div>
+                                        <div class="col-sm-9" style="padding: 0">
+                                            <label
+                                                for=""><% if(record.nursingAssessment.respiratoryAssessment.shortnessOfBreath === false) { %>
+                                                <%= "No" %>
+                                                <% } %>
+                                                <% if(record.nursingAssessment.respiratoryAssessment.shortnessOfBreath === true) { %>
+                                                <%= "Yes" %>
+                                                <% } %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding: 0">
+                                        <div class="col-sm-3" style="padding: 0">
+                                            <label for="">Cough:</label>
+                                        </div>
+                                        <div class="col-sm-9" style="padding: 0">
+                                            <label
+                                                for=""><% if(record.nursingAssessment.respiratoryAssessment.cough === false) { %>
+                                                <%= "No" %>
+                                                <% } %>
+                                                <% if(record.nursingAssessment.respiratoryAssessment.cough === true) { %>
+                                                <%= "Yes" %>
+                                                <% } %>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-radiologic-report" role="tabpanel"
+                            aria-labelledby="pills-radiologic-report-tab" style="background-color: #ffffff">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="">Radiologic image ID:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <label for=""><%= record.radiologicReport.radiologicImageId %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="">Exam type:</label>
+                                </div>
+                                <div class="col-md-9"><%= record.radiologicReport.exam.examType %></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="">Date of exam:</label>
+                                </div>
+                                <div class="col-md-9"><%= record.radiologicReport.exam.dateOfExam %></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="">Clinical history:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <label for=""><%= record.radiologicReport.clinicalHistory %></label>
+                                </div>
+                            </div>
+                            <!-- <div class="row"> -->
+                            <!-- <div class="col-sm-3"> -->
+                            <!-- <label for="">Comparison: </label> -->
+                            <!-- </div> -->
+                            <!-- <div class="col-sm-9"> -->
+                            <!-- <div class="row" style="padding: 0"> -->
+                            <!-- <div class="col-sm-3" style="padding: 0"> -->
+                            <!-- <label for="">Exam type:</label> -->
+                            <!-- </div> -->
+                            <!-- <div class="col-sm-9" style="padding: 0"> -->
+                            <!-- <label for="">MRI</label> -->
+                            <!-- </div> -->
+                            <!-- </div> -->
+                            <!-- <div class="row" style="padding: 0"> -->
+                            <!-- <div class="col-sm-3" style="padding: 0"> -->
+                            <!-- <label for="">Date:</label> -->
+                            <!-- </div> -->
+                            <!-- <div class="col-sm-9" style="padding: 0"> -->
+                            <!-- <label for="">23/09/2019</label> -->
+                            <!-- </div> -->
+                            <!-- </div> -->
+                            <!-- </div> -->
+                            <!-- </div> -->
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="">Technique:</label>
+                                </div>
+                                <div class="col-md-">
+                                    <label for=""><%= record.radiologicReport.technique %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="">Findings:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <label for=""><%= record.radiologicReport.findings %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="">Impression:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <label for=""><%= record.radiologicReport.impression %></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-discharge-summary" role="tabpanel"
+                            aria-labelledby="pills-discharge-summary-tab" style="background-color: #ffffff">
+                            <strong><label for="">Admission detail</label></strong>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Date of admission: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <label for=""><%= record.dischangeSummary.admissionDetail.dateOfAdmission %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Source of referral: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <label
+                                        for=""><%= record.dischangeSummary.admissionDetail.sourceOfReferral %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Admission method: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <label for=""><%= record.dischangeSummary.admissionDetail.admissionMethod %></label>
+                                </div>
+                            </div>
+
+                            <strong><label for="">Discharge detail</label></strong>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Date of discharge: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <label for=""><%= record.dischangeSummary.dischargeDetail.dateOfDischarge %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Discharge method: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <label for=""><%= record.dischangeSummary.dischargeDetail.dateOfDischarge %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Patient status: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <label for=""><%= record.dischangeSummary.dischargeDetail.dateOfDischarge %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Paient died: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <label
+                                        for=""><% if(record.dischangeSummary.dischargeDetail.patientDied === false) { %>
+                                        <%= "No" %>
+                                        <% } %>
+                                        <% if(record.dischangeSummary.dischargeDetail.patientDied === true) { %>
+                                        <%= "Yes" %>
+                                        <% } %>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Date of dead: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <label for=""><%= record.dischangeSummary.dischargeDetail.dateOfDischarge %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="">Cause of dead: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <label for=""><%= record.dischangeSummary.dischargeDetail.dateOfDischarge %></label>
+                                </div>
+                            </div>
+
+                            <strong><label for="">Clinical narrative</label></strong>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Diagnoses: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label for=""><%= record.dischangeSummary.clinicalNarrative.diagnoses %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Operations and Procedures: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label
+                                        for=""><%= record.dischangeSummary.clinicalNarrative.operationsAndProcedures %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Clinical alerts: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label
+                                        for=""><%= record.dischangeSummary.clinicalNarrative.clinicalAlerts %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Allergies: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label for=""><%= record.dischangeSummary.clinicalNarrative.allergies %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Adverse events: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label for=""><%= record.dischangeSummary.clinicalNarrative.adverseEvents %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Hospital course: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label
+                                        for=""><%= record.dischangeSummary.clinicalNarrative.hospitalCourse %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Investigation and Results: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label
+                                        for=""><%= record.dischangeSummary.clinicalNarrative.investigationsAndResult %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Treatement: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label for=""><%= record.dischangeSummary.clinicalNarrative.treatments %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Diet: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label for=""><%= record.dischangeSummary.clinicalNarrative.diet %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Function state: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label
+                                        for=""><%= record.dischangeSummary.clinicalNarrative.functionalState %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Immunisations: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label for=""><%= record.dischangeSummary.clinicalNarrative.immunisations %></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="">Inflection control status: </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label
+                                        for=""><%= record.dischangeSummary.clinicalNarrative.infectionControlStatus %></label>
+                                </div>
+                            </div>
+
+                            <strong><label for="">Medication detail</label></strong>
+                            <div class="row">
+                                <div class="row">
+                                    <label for="">Medication on discharge: </label>
+                                </div>
+                                <div class="row">
+                                    <div class="row" style="width: 100%">
+                                        <div class="col-sm-4">Medication name</div>
+                                        <div class="col-sm-4">Taken for</div>
+                                        <div class="col-sm-4">Direction</div>
+                                    </div>
+                                    <% record.dischangeSummary.medicationDetail.medicationOnDischarge.forEach(function(medication){ %>
+                                    <div class="row" style="width: 100%">
+                                        <div class="col-sm-4"><%= medication.medicationName %></div>
+                                        <div class="col-sm-4"><%= medication.takenFor %></div>
+                                        <div class="col-sm-4"><%= medication.direction %></div>
+                                    </div>
+                                    <% }) %>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+
+            </div>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        const detailButtons = document.querySelectorAll('.btn-detail');
+        // console.log(detailButtons.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling);
+        detailButtons.forEach(button => {
+
+            button.addEventListener('click', (event) => {
+                const detail = button.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling;
+                console.log(detail.style.display);
+                if (detail.style.display === "none") {
+                    detail.style.display = 'block';
+                } else {
+                    detail.style.display = "none"
+                }
+            })
+        });
+        // (button in detailButtons) {
+        //     console.log(button)
+        //     button.addEventListener('click', (event) => {
+        //         const detail = button.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling;
+        //         console.log(detail.style);
+        //         if (detail.style.display === "") {
+        //             detail.style.display = 'none';
+        //         } else {
+        //             detail.style.display = ""
+        //         }
+        //     })
+        // }
+        // detailButtons.addEventListener('click', (event) => {
+        //     const detail = document.querySelector('.health-record-detail');
+        //     console.log(detail.style);
+        //     if (detail.style.display === "") {
+        //         detail.style.display = 'none';
+        //     } else {
+        //         detail.style.display = ""
+        //     }
+        // })
+    </script>
+    <script>
+
+        $(document).ready(function () {
+            $("#getRecordFromCRH").click(function (e) {
+                // e.preventDefault();
+
+
+                alert("Please check your email to get code!");
+                $.ajax({
+                    url: "demo_test.txt", success: function (result) {
+                        $("#div1").html(result);
+                    }
+                });
+
+
+            });
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>

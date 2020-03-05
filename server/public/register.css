@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #0091ea
+}
+
+.container {
+    margin: auto;
+    padding: 80px;
+    background: #ffffff;
+}
+
+.input-name {
+    padding: 0;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+.name-label {
+    padding: 0;
+}
+
+.form-row {
+    margin-top: 20px;
+}
+
+.margin-custom {
+    margin-right: 20px;
+}
+.form-check {
+    padding-left: 2.0rem;
+}
+
+.register-button {
+    /* margin-left: 45%;
+    margin-top: 20px; */
+    
+    margin: auto;
+    display: block;
+    background: #0091ea;
+    border: none;
+    margin-top: 30px;
+}
+
+
+
+.label-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}

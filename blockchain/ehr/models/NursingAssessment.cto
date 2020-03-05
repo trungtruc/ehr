@@ -1,0 +1,89 @@
+namespace org.uit.ehr.NursingAssessment
+
+concept NursingAssessment {
+  o AllergiesAndReactions allergiesAndReactions
+  o Communication communication
+  o VitalSigns vitalSigns
+  o NeurologicalAssessment[] neurologicalAssessment 
+  o Skin skin 
+  o CognitiveFunction cognitiveFunction
+  o RespiratoryAssessment respiratoryAssessment
+}
+
+concept AllergiesAndReactions {
+  o String[] drugs //dị ứng thuốc
+  o String[] foods // dị ứng thực phẩm
+  o String[] other
+}
+
+concept Communication {
+  o String[] language//co can thiet khong?
+  o Boolean hearingDifficult default=false //khó nghe
+  o InformationObtainedFrom informationObtainedFrom //thông tin được thu thập từ ai?
+  o String comment default="N_A"
+}
+
+enum InformationObtainedFrom {
+  o Patient
+  o Family
+  o Other
+}
+
+concept VitalSigns { //các dấu hiệu sống
+  o Integer height
+  o Integer weight
+  o Integer bodyTemperature
+  o Integer pulse //nhịp tim
+  o Integer breathing //nhịp thở
+  // o BloodPressure bloodPressure
+  o Integer bloodPressure
+}
+
+concept BloodPressure {
+  o Integer systolicPressure //Huyết áp tâm thu
+  o Integer diastolicPressure // huyết áp tâm trương
+}
+
+enum NeurologicalAssessment { //Đánh giá thần kinh
+  o Paralysis //Tê liệt
+  o Dizziness //Chóng mặt
+  o Tingling //Ù tai
+  o Seizures //Động kinh
+  o Numbness //tê
+  o Weakness //Yếu đuối
+
+}
+
+enum Skin {
+  o Rash
+  o Redness
+  o Bruises
+  o Dryness
+  o Diaphoresis
+}
+
+enum Behaviour {
+  o Agitated
+  o Crying
+  o Demanding
+  o Restless
+  o Shouting
+  o Drowsy
+}
+
+enum Affect {
+  o Flat
+  o Angry
+  o Sad
+  o Suspicious
+}
+
+concept CognitiveFunction {
+  o Behaviour behaviour
+  o Affect affect 
+}
+
+concept RespiratoryAssessment {
+  o Boolean shortnessOfBreath default=false
+  o Boolean cough default=false
+}

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/register.css">
+  <title>Create account</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="label-wrap">
+      <h1 for="" id="signup-label" style="color: #0091ea;">Create account</h1>
+    </div>
+    <form action="/register" method="POST">
+      <!-- account infor -->
+      <div class="form-group row">
+        <label for="inputEmail" class="col-sm-4 col-form-label">Email</label>
+        <div class="col-sm-6">
+          <input type="email" name="email" class="form-control" id="inputEmail" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
+        <div class="col-sm-6">
+          <input type="password" name="password" class="form-control" id="inputPassword" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputConfirmPassword" class="col-sm-4 col-form-label">Confirm Password</label>
+        <div class="col-sm-6">
+          <input type="password" name="password_confirm" class="form-control" id="inputConfirmPassword" required>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="form-group row">
+        <div class="col-sm-6 mb-3">
+          <label for="inputFirstName">First Name</label>
+          <input type="text" name="firstName" class="form-control" id="input-first-name" required>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <label for="inputLastName">Last Name</label>
+          <input type="text" name="lastName" class="form-control" id="input-last-name" required>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-6 form-group">
+          <label for="inputDateOfBirth">Date of Birth</label>
+          <div class="form-group row">
+            <div class="col-md-4">
+              <input type="text" name="month" class="form-control" id="inputMonth" placeholder="Month">
+            </div>
+            <div class="col-md-4">
+              <input type="text" name="day" class="form-control" id="inputDay" placeholder="Day">
+            </div>
+            <div class="col-md-4">
+              <input type="text" name="year" class="form-control" id="inputYear" placeholder="Year">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 form-group">
+          <label for="inputGender">Gender</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" value="Male" checked>
+            <label class="form-check-label" for="gender">
+              Male
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" value="Female">
+            <label class="form-check-label" for="gender">
+              Female
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" value="Other">
+            <label class="form-check-label" for="gender">
+              Other
+            </label>
+          </div>
+        </div>
+
+        <div class="col-md-3 form-group">
+          <label for="inputMarital">Marital</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="marriageStatus" value="Single" checked>
+            <label class="form-check-label" for="marriageStatus">
+              Single
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="marriageStatus" value="Married">
+            <label class="form-check-label" for="marriageStatus">
+              Married
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="marriageStatus" value="Married">
+            <label class="form-check-label" for="marriageStatus">
+              Other
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-sm-4 mb-3">
+          <label for="inputIdentityCardNumber">Identity Number</label>
+          <input type="text" name="identityCardNumber" class="form-control" id="input-identity-number" required>
+        </div>
+        <div class="form-group col-sm-4">
+          <label for="ethnicity">Ethnicity</label>
+          <select name="ethnicity" class="form-control">
+            <option value="bana">Ba Na</option>
+            <option value="bo-y">Bố Y</option>
+            <option value="brau">Brâu</option>
+            <option value="bru">Bru</option>
+            <option value="cham">Chăm</option>
+            <option value="cho-ro">Chơ Ro</option>
+            <option value="chu-ru">Chu Ru</option>
+            <option value="chut">Chứt</option>
+            <option value="co">Co</option>
+            <option value="co-ho">Cờ Ho</option>
+            <option value="co-lao">Cờ Lao</option>
+            <option value="co-tu">Cờ Tu</option>
+            <option value="dao">Dao</option>
+            <option value="e-de">Ê Đê</option>
+            <option value="gia-rai">Gia Rai</option>
+            <option value="giay">Giáy</option>
+            <option value="gie-trieng">Giẻ Triêng</option>
+            <option value="ha-nhi">Hà Nhì</option>
+            <option value="hmong">Hmong</option>
+            <option value="hoa">Hoa</option>
+            <option value="hre">Hrê</option>
+            <option value="khang">Kháng</option>
+            <option value="khmer">Khmer</option>
+            <option value="kho-mu">Khơ Mú</option>
+            <option value="Kinh">Kinh</option>
+            <option value="la-chi">La Chí</option>
+            <option value="la-ha">La Ha</option>
+            <option value="la-hu">La Hủ</option>
+            <option value="lao">Lao</option>
+            <option value="lo-lo">Lô Lô</option>
+            <option value="lu">Lự</option>
+            <option value="ma">Mạ</option>
+            <option value="mang">Mảng</option>
+            <option value="mnong">Mnông</option>
+            <option value="muong">Mường</option>
+            <option value="ngai">Ngái</option>
+            <option value="nung">Nùng</option>
+            <option value="o-du">Ơ Đu</option>
+            <option value="pa-then">Pà Thẻn</option>
+            <option value="phu-la">Phù Lá</option>
+            <option value="phunoi">Phunoi</option>
+            <option value="pu-peo">Pu Péo</option>
+            <option value="ra-glai">Ra Glai</option>
+            <option value="ro-mam">Rơ Măm</option>
+            <option value="san-chay">Sán Chay</option>
+            <option value="san-diu">Sán Dìu</option>
+            <option value="si-la">Si La</option>
+            <option value="ta-oi">Tà Ôi</option>
+            <option value="tay">Tày</option>
+            <option value="thai">Thái</option>
+            <option value="tho">Thổ</option>
+            <option value="x-tieng">X'Tiêng</option>
+            <option value="xinh-mun">Xinh Mun</option>
+            <option value="xo-dang">Xơ Đăng</option>
+          </select>
+        </div>
+        <div class="form-group col-sm-4">
+          <label for="nationality">Nationality</label>
+          <input type="text" class="form-control" name="nationality" required>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="form-group row">
+        <div class="form-group col-sm-12">
+          <label for="inputAddress">Address</label>
+          <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Address">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-4">
+          <!-- <label for="inputCity">City</label> -->
+          <input type="text" name="city" class="form-control" id="inputCity" placeholder="City">
+        </div>
+        <div class="col-sm-4">
+          <!-- <label for="inputState">State</label> -->
+          <input type="text" name="state" id="inputState" class="form-control" placeholder="State">
+        </div>
+        <div class="col-sm-4">
+          <!-- <label for="inputCountry">Country</label> -->
+          <input type="text" name="country" class="form-control" id="inputCountry" placeholder="Country">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="form-group col-sm-12">
+          <label for="">Phone Number</label>
+        </div>
+        <div class="col-md-4">
+          <input type="text" name="home" class="form-control" id="inputHomePhoneNumber" placeholder="Home" value="N_A">
+        </div>
+        <div class="col-md-4">
+          <input type="text" name="work" class="form-control" id="inputWorkPhoneNumber" placeholder="Work" value="N_A">
+        </div>
+        <div class="col-md-4">
+          <input type="text" name="mobile" class="form-control" id="inputMobilePhoneNumber" placeholder="Mobile"
+            value="N_A">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="form-group col-sm-12">
+          <label for="">Emergency Contact</label>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-4">
+          <input type="text" name="emergencyContactName" class="form-control" id="inputContactName"
+            placeholder="Contact Name">
+        </div>
+        <div class="col-md-4">
+          <input type="text" name="emergencyContactPhone" class="form-control" id="inputWorkPhoneNumber"
+            placeholder="Contact Phone Number">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="form-group col-sm-12">
+          <label for="">Language Patient</label>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-4">
+          <input type="text" name="languagePatient" class="form-control" id="inputLanguagePatient"
+            placeholder="Langage patient">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="form-group col-sm-12">
+          <label for="">Health Insurance</label>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-4">
+          <input type="text" name="provider" class="form-control" id="inputProvider"
+            placeholder="Provider">
+        </div>
+        <div class="col-md-4">
+          <input type="text" name="insuranceNumber" class="form-control" id="inputInsuranceNumber"
+            placeholder="Insurance Number">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg register-button">Register</button>
+    </form>
+  </div>
+</body>
+
+</html>

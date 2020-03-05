@@ -1,0 +1,140 @@
+var data = {
+	"healthRecordId":"",
+    "doctorId":"",
+    "createdAt":"",
+    "dischangeSummary":{
+    	"admissionDetail":{
+    		"dateOfAdmission":"",//string
+    		"sourceOfReferral":"",//string
+    		"admissionMethod":"",//string
+    	},
+		"dischargeDetail" :{
+			"dateOfDischarge":"",
+			"dischargeMethod":"",
+			"patientStatus":"",
+			"patientDied":false,//boolean
+			"dateOfDead ":"",
+			"causeOfDead":"",
+		},
+		"clinicalNarrative":{
+			"diagnoses":"",
+			"operationsAndProcedures":"",
+			"clinicalAlerts":"",
+			"allergies":"",
+			"adverseEvents":"",
+			"hospitalCourse":"",
+			"investigationsAndResult":"",
+			"treatments":"",
+			"diet":"",
+			"functionalState":"",
+			"immunisations":"",
+			"infectionControlStatus":"",
+		},
+		"medicationDetail":{
+			"medicationOnDischarge":[{
+				"medicationName":"",
+				"takenFor":"",
+				"direction":""
+			}],//mang linh dong so phan tu
+			"medicationStopped":[{
+				"medicationName":"",
+				"takenFor":"",
+				"direction":""
+			}],//mang linh dong so phan tu
+		},
+    },
+    "nursingAssessment":{
+    	"allergiesAndReactions":{
+    		"drugs":[""],//mang linh dong so phan tu
+    		"foods":[""],//mang linh dong so phan tu
+    		"other":[""]//mang linh dong so phan tu
+    	},
+    	"communication":{
+    		"language":[""],//mang linh dong so phan tu
+    		"hearingDifficult": false, //boolean
+    		"informationObtainedFrom":"",
+    		"comment":"",
+    	},
+    	"vitalSigns":{
+    		"height":0,
+			"weight":0,
+			"bodyTemperature":0,
+			"pulse":0,
+			"breathing":0,
+			"bloodPressure":{
+				"systolicPressure":0,
+				"diastolicPressure":0,
+			},
+    	},
+    	"neurologicalAssessment":[""],
+		"skin":"",
+		"cognitiveFunction":{
+			"behaviour":"",
+			"affect":""
+		},
+		"respiratoryAssessment":{
+			"shortnessOfBreath":false,
+			"cough":false,
+		}
+    },
+    "radiologicReport":{
+    	"radiologicImageId":"",
+    	"exam":{
+    		"examType":"",
+    		"dateOfExam":"",
+    	},
+    	"clinicalHistory":"",
+    	"comparison":{
+    		"examType":"",
+    		"date":"",
+    	},
+    	"technique":"",
+    	"findings":"",
+    	"impression":"",
+    },
+    "patientDemographic":{
+    	"patientName":{
+    		"firstName":"",
+    		"lastName":""
+    	},
+    	"dateOfBirth":"",
+    	"gender":"",
+    	"ethnicity":"",
+    	"marital":false,//boolean
+    	"contact":{
+    		"address":{
+    			"addressee":"",
+				"buildingOrDepartment":"",
+				"lane":"",
+				"alley":"",
+				"hamlet":"",
+				"village":"",
+				"street":"",
+				"districtOrTown":"",
+				"city":"",
+				"state":"",
+				"country":"",
+    		},
+    		"patientPhoneNumber":{
+    			"home":"",
+    			"work":"",
+    			"mobile":"",
+    		},
+    		"emergencyContact":[{
+    			"emergencyContactName":"",
+    			"emergencyContactPhone":{
+    				"home":"",
+	    			"work":"",
+	    			"mobile":"",
+    			}
+    		}],//mang linh dong so phan tu
+    	},
+    	"language":"",
+    	"healthInsurance":{
+    		"provider":"",
+    		"insuranceNumber":"",
+    	},
+    },
+    "authorizedDoctors":[],
+    
+}

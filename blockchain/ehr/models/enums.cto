@@ -1,0 +1,32 @@
+namespace org.uit.ehr.enums
+enum ResourceType{
+    o DoctorInformation
+    o PatientInformation
+    o HealthRecord
+}
+enum Role{
+    o Patient
+    o Doctor
+}
+
+enum MariageStatus {
+    o Single
+    o Married
+    o Other
+}
+
+enum Specialist { //https://www.vinmec.com/vi/danh-sach/bac-si/ca-nuoc/chuyenkhoa-gay-me-giam-dau/
+    o Cardiologist
+    o Andrologist 
+    o Epidemiologist
+    o Dermatologist
+    o Gynecologist
+    o Gastroenterologist
+    o N_A
+}
+
+enum RequestStatus{
+    o Created
+    o Rejected
+    o Accepted
+}

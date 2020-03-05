@@ -1,0 +1,8 @@
+{"_id":{"$oid":"5d5fbcfecce97c3250617d44"},"firstName":"Hue","lastName":"Tran","dateOfBirth":"24/12/1997","gender":"Male","identityCardNumber":"11111111","ethnicity":"Kinh"}
+{"_id":{"$oid":"5d5fbcfecce97c3250617d45"},"firstName":"Truc","lastName":"Nguyen","dateOfBirth":"10/01/1997","gender":"Male","identityCardNumber":"22222222","ethnicity":"Kinh"}
+{"_id":{"$oid":"5d5fbcfecce97c3250617d46"},"firstName":"Nhung","lastName":"Nguyen","dateOfBirth":"18/01/1997","gender":"Female","identityCardNumber":"33333333","ethnicity":"Kinh"}
+{"_id":{"$oid":"5d5fbcfecce97c3250617d47"},"firstName":"Tien","lastName":"Pham","dateOfBirth":"01/01/1997","gender":"Male","identityCardNumber":"44444444","ethnicity":"Kinh"}
+{"_id":{"$oid":"5d5fbcfecce97c3250617d48"},"firstName":"Ngan","lastName":"Ta","dateOfBirth":"02/01/1997","gender":"Female","identityCardNumber":"55555555","ethnicity":"Kinh"}
+{"_id":{"$oid":"5d5fbcfecce97c3250617d49"},"firstName":"Chi","lastName":"Le","dateOfBirth":"03/01/1997","gender":"Female","identityCardNumber":"66666666","ethnicity":"Kinh"}
+{"_id":{"$oid":"5d5fbcfecce97c3250617d4a"},"firstName":"Ha","lastName":"Dang","dateOfBirth":"04/01/1997","gender":"Female","identityCardNumber":"77777777","ethnicity":"Kinh"}
+{"_id":{"$oid":"5d79a58948b90119e816cee9"},"firstName":"patient","lastName":"patient","dateOfBirth":"patient","gender":"Male","identityCardNumber":"patient","ethnicity":"Kinh"}

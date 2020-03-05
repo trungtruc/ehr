@@ -1,0 +1,59 @@
+namespace org.uit.ehr.PatientDemographic
+
+concept Demographic {
+  // o String patientId
+  o Name patientName
+  o String dateOfBirth
+  o Gender gender 
+  o String ethnicity
+  // o Boolean marital
+  o Contact contact 
+  o String language
+  o HealthInsurance healthInsurance
+}
+
+concept Name {
+  o String firstName
+  o String lastName
+}
+
+enum Gender {
+  o Male
+  o Female
+  o Other
+}
+
+// enum Ethnicity {
+//   o Row1
+//   o Row2
+//   o Row3
+// }
+
+concept Contact {
+  o Address address 
+  o PhoneNumber patientPhoneNumber
+  o EmergencyContact emergencyContact
+}
+
+concept Address {
+  o String address
+  o String city
+  o String state
+  o String country 
+}
+
+concept PhoneNumber {
+  o String home default="N_A"
+  o String work default="N_A"
+  o String mobile default="N_A"
+}
+
+concept EmergencyContact {
+  o String emergencyContactName
+  o String emergencyContactPhone
+}
+
+concept HealthInsurance {
+  o String provider
+  o String insuranceNumber
+}

@@ -1,0 +1,235 @@
+/* @import url('https://fonts.googleapis.com/css?family=Crimson+Pro:400,500,700&display=swap'); */
+
+html, body, .container-fluid {
+    font-family: 'Roboto', sans-serif;
+    background: #ffffff;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+body {
+    padding: 0;
+    margin: 0;
+}
+
+
+.main-content {
+    margin: 0;
+    background: #ffffff;
+    padding: 0;
+    height: 100%;
+    line-height: 60px;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+.short-profile {
+    line-height: 50px;
+    font-size: 2.0rem;
+    margin: auto;
+}
+
+.nav-top {
+    background: #424242;
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-between ;
+    border-bottom: 2px solid #212121
+}
+.nav-left {
+    padding: 0;
+    border-right: 2px solid #212121;
+    position: relative;
+    background-color: #424242
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li a {
+    display: block;
+    color: #ffffff;
+    padding: 8px 24px;
+    text-decoration: none;
+    border-bottom: 0.5px solid #212121
+}
+li a:hover {
+    background-color: #555;
+    color: white;
+    text-decoration: none
+}
+
+.active {
+    background-color: #111111
+}
+
+td, tr, th {
+    border: 1px solid black
+}
+
+
+.table-header {
+    text-align: center;
+    font-weight: bold
+}
+.health-record-item {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+    text-align: center
+    /* width: 100%; */
+}
+.aside {
+    position: relative;
+    display: flex;
+    flex-direction: column
+}
+.aside a {
+    font-size: 1.2rem;
+    position: relative;
+}
+
+.health-record-detail-nav {
+    border-right: 1px solid black
+}
+
+.nav-link {
+    background-color: #ffffff;
+    color: #111111
+}
+
+.tab-content {
+    width: 100%;
+    padding: 20px 0;
+    border-top: 2px solid #546e7a
+}
+.tab-content div div {
+    padding-left: 25px;
+}
+
+.health-record-detail {
+    padding: 20px;
+    display: none;
+}
+
+.record-section {
+    display: flex;
+    flex-direction: column
+}
+.record-section-header {
+    clear: both;
+}
+.record-section-sub-header {
+    padding: 20px 10px;
+}
+.record-section-content {
+    display: flex;
+    flex-direction: column
+}
+
+.input-group {
+    display: flex;
+    align-items: center
+}
+
+.form-group {
+    padding-left: 25px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center
+}
+
+.horizontal-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.horizontal-input > input[type='text']{
+    width: 20%;
+    height: 2rem;
+    margin: 0 5px 0 15px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    padding: auto
+}
+::-ms-input-placeholder {
+    font-size: 0.8rem;
+    color: red
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-size: 0.8rem;
+    text-align: center;
+    line-height: 0.8rem;
+}
+
+.title{
+    font-weight: 500
+}
+
+.form-check-label {
+    font-size: 1.2rem
+}
+
+.patient-died-option {
+    display: none
+}
+
+.medication-section {
+    margin-left: 40px;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px
+}
+.medication-section-wrapper i {
+    margin-left: 40px;
+    padding: 0;
+}
+.confirm-area button {
+    width: 7%;
+}
+
+#requests {
+    border-collapse: collapse;
+    width: 100%;
+    /* font-size: 1rem */
+}
+
+#requests td, #requests th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center
+}
+
+#requests tr:nth-child(even){background-color: #f2f2f2;}
+
+#requests tr:hover {background-color: #ddd;}
+
+#requests th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+}
+#requests td {
+    font-size: 1.5rem
+}
+#requests i:hover {
+    cursor: pointer
+}
+
+.accept {
+    background-color: #ffffff;
+    color: #43a047;
+}
+.deny {
+    background-color: inherit;
+    color: #b71c1c;
+}
+
+#create-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start
+}

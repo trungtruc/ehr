@@ -1,0 +1,83 @@
+namespace org.uit.ehr
+
+import org.uit.ehr.DischangeSummary.*
+import org.uit.ehr.enums.*
+import org.uit.ehr.NursingAssessment.*
+import org.uit.ehr.PatientDemographic.*
+import org.uit.ehr.RadiologicReport.*
+
+/* Participant*/
+abstract participant Person identified by personID {
+    o String personID
+    o String firstName 
+    o String lastName
+    o String dateOfBirth
+    o Gender gender
+    o String identityCardNumber
+    o String ethnicity
+}
+
+
+participant Doctor extends Person {
+
+}
+
+participant Patient extends Person {
+    
+}
+
+/* asset */
+
+asset DoctorInformation identified by doctorInfoID {
+    o String doctorInfoID
+    o String firstName
+    o String lastName
+    o Gender gender
+    o String ethnicity
+    o String nationality
+    o Specialist specialist
+    //o String workPlace
+    --> Patient[] authorizedPatients 
+    --> Doctor owner
+}
+
+asset PatientInformation identified by patientInfoID {
+    o String patientInfoID
+    // o String firstName
+    // o String lastName
+    // o String dateOfBirth
+    // o Gender gender
+    // o String ethnicity
+    o MariageStatus marriageStatus
+    // o Address address
+    o String nationality
+    // o PhoneNumber phoneNumber
+    o Demographic patientDemographic
+    --> Doctor[] authorizedDoctors
+    --> Patient owner
+}
+
+asset ReadRequest identified by requestID {
+    o String requestID
+    o Role requesterRole
+    o Role resourceOwnerRole
+    o ResourceType resourceType
+    o String resourceID
+    o String createdAt
+    o RequestStatus requestStatus
+    --> Person owner
+    --> Person resourceOwner
+}
+
+
+asset HealthRecord identified by healthRecordId {
+    o String healthRecordId
+    o String doctorId
+    o DisSum dischangeSummary
+    o NursingAssessment nursingAssessment
+    o RadiologicReport radiologicReport
+    // o Demographic patientDemographic
+    --> Doctor[] authorizedDoctors
+    o String createdAt
+    --> Patient owner
+}

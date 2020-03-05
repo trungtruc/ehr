@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+
+    <title>Create Health Record</title>
+</head>
+
+<body>
+    <div class="container-fluid body-content">
+        <nav class="nav nav-pills nav-justified nav-top">
+            <div class="col-md-4">
+                <a href="/home" class="navbar-brand">
+                    <img src="../imgs/banner.png" alt="" class="d-inline-block align-top" width="80%" height="80%">
+                </a>
+            </div>
+        </nav>
+        <div class="row main-content" style="background: #424242">
+            <div class="col-lg-2 nav-left">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li class="active"><a href="/healthrecord">Health Record</a></li>
+                    <li><a href="/request">Request</a></li>
+                    <li><a href="/patient">Patients</a></li>
+                    <!-- <li><a href="/doctor">Doctors</a></li> -->
+                </ul>
+            </div>
+            <div class="col-lg-10 aside" style="background: #ffffff; padding: 20px">
+                <form action="/healthrecord/create" method="POST">
+
+                    <div class="row record-section" style="padding: 20px">
+
+                        <div class="section-wrapper">
+                            <div class="record-section-sub-header">
+                                <strong><label for="">Patient ID</label></strong>
+                            </div>
+                            <div class="form-group row">
+                                <label for="drugs" class="col-sm-2 col-form-label title">Patient ID: </label>
+                                <div class="col-sm-8 ">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control col-md-10 text-input" name='patientId'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row record-section" style="padding: 20px">
+                        <div class="row record-section-header">
+                            <h3>Nursing Assessment</h3>
+                        </div>
+                        <div class="section-wrapper">
+                            <div class="record-section-sub-header">
+                                <strong><label for="">Allergies and Reactions</label></strong>
+                            </div>
+                            <div class="form-group row">
+                                <label for="drugs" class="col-sm-2 col-form-label title">Drugs</label>
+                                <div class="col-sm-8 ">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control col-md-10 text-input" name='drugs[]'>
+                                        <i class="fas fa-plus-square col-md-2 buttonPlus"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="foods" class="col-sm-2 col-form-label title">Foods</label>
+                                <div class="col-sm-8 ">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control col-md-10 text-input" name='foods[]'>
+                                        <i class="fas fa-plus-square col-md-2 buttonPlus"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="other" class="col-sm-2 col-form-label title">Other</label>
+                                <div class="col-sm-8 ">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control col-md-10 text-input" name='other[]'>
+                                        <i class="fas fa-plus-square col-md-2 buttonPlus"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-wrapper">
+                            <div class="record-section-sub-header">
+                                <strong><label for="">Communication</label></strong>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="languages" class="col-sm-3 col-form-label title">Languages</label>
+                                <div class="col-sm-7 ">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control col-md-10 text-input" name='languages[]'>
+                                        <i class="fas fa-plus-square col-md-2 buttonPlus"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row ">
+                                <label for="hearing-difficult" class="col-sm-3 col-form-label title">Hearing
+                                    difficult</label>
+                                <div class="col-sm-7 ">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="hearingDifficult"
+                                            value="yes">
+                                        <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="hearingDifficult" value="no"
+                                            checked>
+                                        <label class="form-check-label" for="inlineRadio2">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row ">
+                                <label for="information-obtained-from" class="col-sm-3 col-form-label title">Information
+                                    obtained from </label>
+                                <div class="col-sm-7 ">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="informationObtainedFrom"
+                                            value="Patient" checked>
+                                        <label class="form-check-label" for="inlineRadio1">Patient</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="informationObtainedFrom"
+                                            value='Family'>
+                                        <label class="form-check-label" for="inlineRadio2">Family</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="informationObtainedFrom"
+                                            value="Other">
+                                        <label class="form-check-label" for="inlineRadio2">Other</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row ">
+                                <label for="comment" class="col-sm-3 col-form-label title">Comment</label>
+                                <div class="col-sm-6 ">
+                                    <textarea class="form-control" name="comment" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-wrapper">
+                            <div class="record-section-sub-header">
+                                <strong><label for="">Vital signs</label></strong>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4 horizontal-input">
+                                    <label for="inputHeight" class="title">Height</label>
+                                    <input type="text" name="height">
+                                    <small>cm</small>
+                                </div>
+                                <div class="col-md-4 horizontal-input">
+                                    <label for="inputWeight" class="title">Weight</label>
+                                    <input type="text" name="weight">
+                                    <small>kg</small>
+                                </div>
+                                <div class="col-md-4 horizontal-input">
+                                    <label for="inputBodyTemperature" class="title">Body Temperature</label>
+                                    <input type="text" name="bodyTemperature">
+                                    <small><sup>o</sup>C</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4 horizontal-input">
+                                    <label for="inputPulse" class="title">Pulse</label>
+                                    <input type="text" name="pulse">
+                                    <small>beats/minute</small>
+                                </div>
+                                <div class="col-md-4 horizontal-input">
+                                    <label for="inputBreath" class="title">Breath</label>
+                                    <input type="text" name="breath">
+                                    <small>breaths/minute</small>
+                                </div>
+                                <div class="col-md-4 horizontal-input">
+                                    <label for="inputBlood" class="title">Blood Pressure:</label>
+                                    <input type="text" name="bloodPressure">
+                                    <small>mmHg</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section-wrapper">
+                            <div class="record-section-sub-header">
+                                <strong><label for="">Neurological assessment</label></strong>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-2">
+                                    <label for="skinInput" class="title">Skin:</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="form-check form-check-inline">
+                                        <input name="skin" class="form-check-input" type="checkbox" value="Rash">
+                                        <label class="form-check-label" for="inlineCheckbox1">Rash</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="skin" class="form-check-input" type="checkbox" value="Redness">
+                                        <label class="form-check-label" for="inlineCheckbox2">Redness</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="skin" class="form-check-input" type="checkbox" value="Bruises">
+                                        <label class="form-check-label" for="inlineCheckbox3">Bruises</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="skin" class="form-check-input" type="checkbox" value="Dryness">
+                                        <label class="form-check-label" for="inlineCheckbox3">Dryness</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="skin" class="form-check-input" type="checkbox" value="Diaphoresis">
+                                        <label class="form-check-label" for="inlineCheckbox3">Diaphoresis</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-2">
+                                    <label for="skinInput" class="title">Behaviour:</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="form-check form-check-inline">
+                                        <input name="behaviour" class="form-check-input" type="checkbox"
+                                            value="Agitated">
+                                        <label class="form-check-label" for="inlineCheckbox1">Agitated</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="behaviour" class="form-check-input" type="checkbox" value="Crying">
+                                        <label class="form-check-label" for="inlineCheckbox2">Crying</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="behaviour" class="form-check-input" type="checkbox"
+                                            value="Demanding">
+                                        <label class="form-check-label" for="inlineCheckbox3">Demanding</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="behaviour" class="form-check-input" type="checkbox"
+                                            value="Restless">
+                                        <label class="form-check-label" for="inlineCheckbox3">Restless</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="behaviour" class="form-check-input" type="checkbox"
+                                            value="Shouting">
+                                        <label class="form-check-label" for="inlineCheckbox3">Shouting</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="behaviour" class="form-check-input" type="checkbox" value="Drowsy">
+                                        <label class="form-check-label" for="inlineCheckbox3">Drowsy</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-2">
+                                    <label for="skinInput" class="title">Affect:</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="form-check form-check-inline">
+                                        <input name="affect" class="form-check-input" type="checkbox" value="Flat">
+                                        <label class="form-check-label" for="inlineCheckbox1">Flat</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="affect" class="form-check-input" type="checkbox" value="Angry">
+                                        <label class="form-check-label" for="inlineCheckbox2">Angry</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="affect" class="form-check-input" type="checkbox" value="Sad">
+                                        <label class="form-check-label" for="inlineCheckbox3">Sad</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="affect" class="form-check-input" type="checkbox"
+                                            value="Suspicious">
+                                        <label class="form-check-label" for="inlineCheckbox3">Suspicious</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-3">
+                                    <label for="skinInput" class="title">Shortness of Breath:</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="form-check form-check-inline">
+                                        <input name="shortnessOfBreath" class="form-check-input" type="radio"
+                                            value="True">
+                                        <label class="form-check-label" for="inlineCheckbox1">Yes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="shortnessOfBreath" class="form-check-input" type="radio"
+                                            value="False" checked>
+                                        <label class="form-check-label" for="inlineCheckbox2">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-3">
+                                    <label for="skinInput" class="title">Cough:</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="form-check form-check-inline">
+                                        <input name="cough" class="form-check-input" type="radio" value="True">
+                                        <label class="form-check-label" for="inlineCheckbox1">Yes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="cough" class="form-check-input" type="radio" value="False" checked>
+                                        <label class="form-check-label" for="inlineCheckbox2">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-2">
+                                    <label for="neurologicalAssessmentInput" class="title">Neurological
+                                        Assessment:</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="form-check form-check-inline">
+                                        <input name="neurologicalAssessment" class="form-check-input" type="checkbox"
+                                            value="Paralysis">
+                                        <label class="form-check-label" for="inlineCheckbox1">Paralysis</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="neurologicalAssessment" class="form-check-input" type="checkbox"
+                                            value="Dizziness">
+                                        <label class="form-check-label" for="inlineCheckbox2">Dizziness</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="neurologicalAssessment" class="form-check-input" type="checkbox"
+                                            value="Tingling">
+                                        <label class="form-check-label" for="inlineCheckbox3">Tingling</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="neurologicalAssessment" class="form-check-input" type="checkbox"
+                                            value="Seizures">
+                                        <label class="form-check-label" for="inlineCheckbox3">Seizures</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="neurologicalAssessment" class="form-check-input" type="checkbox"
+                                            value="Numbness">
+                                        <label class="form-check-label" for="inlineCheckbox3">Numbness</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="neurologicalAssessment" class="form-check-input" type="checkbox"
+                                            value="Weakness">
+                                        <label class="form-check-label" for="inlineCheckbox3">Weakness</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row record-section" style="padding: 20px; border-top: 1px solid #bdbdbd ">
+                        <div class="row record-section-header">
+                            <h3>Radiologic Report</h3>
+                        </div>
+                        <div class="section-wrapper">
+                            <div class="form-group row">
+                                <label for="" class="col-md-2 col-form-label title">Radiologic image ID</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="radiologicImageId" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="inputState" class="title col-md-2 col-form-label">Exam type</label>
+                                <div class="col-md-4">
+                                    <select id="inputState" name="examType" class="form-control">
+                                        <option value="MRI" selected>MRI</option>
+                                        <option value="CT" selected>CT</option>
+                                        <option value="Ultrasound" selected>Ultrasound</option>
+                                        <option value="NuclearMedicine" selected>Nuclear Medicine</option>
+                                        <option value="Xray" selected>Xray</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="" class="col-md-2 col-form-label title">Date of Exam</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="dateOfExam" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-2 col-form-label title">Clinical history</label>
+                                <div class="col-md-4">
+                                    <textarea name="clinicalHistory" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-2 col-form-label title">Technique</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="technique" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-2 col-form-label title">Findings</label>
+                                <div class="col-md-4">
+                                    <textarea name="findings" class="form-control" rows="4"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-2 col-form-label title">Impression</label>
+                                <div class="col-md-4">
+                                    <textarea name="impression" class="form-control" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row record-section" style="padding: 20px; border-top: 1px solid #bdbdbd ">
+                        <div class="row record-section-header">
+                            <h3>Discharge Summary</h3>
+                        </div>
+                        <div class="section-wrapper">
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Date of Admission</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="dateOfAdmission" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    <label for="skinInput" class="title">Source of Referral:</label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="form-check form-check-inline">
+                                        <input name="sourceOfReferral" class="form-check-input" type="radio"
+                                            value="SelfReferral" checked>
+                                        <label class="form-check-label" for="inlineCheckbox1">Self-referral</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="sourceOfReferral" class="form-check-input" type="radio"
+                                            value="AmbulanceService">
+                                        <label class="form-check-label" for="inlineCheckbox2">Ambulance Service</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="sourceOfReferral" class="form-check-input" type="radio"
+                                            value="OutOfHours Service">
+                                        <label class="form-check-label" for="inlineCheckbox2">Out-of-Hours
+                                            Service</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="sourceOfReferral" class="form-check-input" type="radio"
+                                            value="OtherHospital">
+                                        <label class="form-check-label" for="inlineCheckbox2">Other Hospital</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    <label for="skinInput" class="title">Admission method:</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-check form-check-inline">
+                                        <input name="admissionMethod" class="form-check-input" type="radio"
+                                            value="Elective" checked>
+                                        <label class="form-check-label" for="inlineCheckbox1">Elective</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="admissionMethod" class="form-check-input" type="radio"
+                                            value="Emergency">
+                                        <label class="form-check-label" for="inlineCheckbox2">Emergency</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="admissionMethod" class="form-check-input" type="radio"
+                                            value="Transfer">
+                                        <label class="form-check-label" for="inlineCheckbox2">Transfer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Date of Discharge</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="dateOfDischarge" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Discharge method</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="dischargeMethod" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Patient status</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="patientStatus" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-check form-check-inline row form-group horizontal-input"
+                                style="padding: 40px">
+                                <input name="patientDied" class="form-check-input" type="checkbox" value="False">
+                                <label class="title" for="inlineCheckbox1" style="font-size: inherit">Patient
+                                    died</label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Date of dead</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="dateOfDead" class="form-control" value="N_A">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Cause of dead</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="causeOfDead" class="form-control" value="N_A">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Diagnoses</label>
+                                <div class="col-md-4">
+                                    <textarea name="diagnoses" class="form-control" rows='5'></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Operations and Procedures</label>
+                                <div class="col-md-4">
+                                    <textarea name="operationsAndProcedures" class="form-control" rows='5'></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Clinical alerts</label>
+                                <div class="col-md-4">
+                                    <textarea name="clinicalAlerts" class="form-control" rows='5'></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Allergies</label>
+                                <div class="col-md-4">
+                                    <textarea name="allergies" class="form-control" rows='5'></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Adverse events</label>
+                                <div class="col-md-4">
+                                    <textarea name="adverseEvents" class="form-control" rows='5'></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Hospital course</label>
+                                <div class="col-md-4">
+                                    <textarea name="hospitalCourse" class="form-control" rows='5'></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Investigation and Result</label>
+                                <div class="col-md-4">
+                                    <textarea name="investigationsAndResult" class="form-control" rows='5'></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Treatment</label>
+                                <div class="col-md-4">
+                                    <textarea name="treatments" class="form-control" rows='5'></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Diet</label>
+                                <div class="col-md-4">
+                                    <textarea name="diet" class="form-control" rows='5'></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Functional state</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="functionalState" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Immunisations</label>
+                                <div class="col-md-4">
+                                    <textarea name="immunisations" class="form-control" rows='5'></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label title">Infection Control Status</label>
+                                <div class="col-md-4">
+                                    <textarea name="infectionControlStatus" class="form-control" rows='5'></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="record-section-sub-header">
+                            <strong><label for="">Medication on Discharge</label></strong>
+                        </div>
+                        <div class="section-wrapper medication-section-wrapper">
+                            <div class="medication-section col-md-8">
+                                <div class="form-group row">
+                                    <label for="" class="col-md-4 col-form-label title">Medication name</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="medicationName[]" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-md-4 col-form-label title">Taken for</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="takenFor[]" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-md-4 col-form-label title">Direction</label>
+                                    <div class="col-md-8">
+                                        <textarea name="direction[]" class="form-control" rows='5'></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <i class="fas fa-plus-square col-md-2" id="button-add-medicine"></i>
+                        </div>
+                        <div class="confirm-area">
+                            <button class="btn btn-primary" type="submit">Save</button>
+                            <button class="btn btn-danger">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../scripts/create-health-record.js"></script>
+    <script src="https://kit.fontawesome.com/fe382da393.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

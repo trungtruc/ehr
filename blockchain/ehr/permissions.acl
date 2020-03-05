@@ -1,0 +1,160 @@
+/*
+ * The rules about admin and system
+ */
+
+rule SystemACL {
+    description: "System ACL to permit all access"
+    participant: "org.hyperledger.composer.system.Participant"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+rule NetworkAdminUser {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "**"
+    action: ALLOW
+}
+
+rule NetworkAdminSystem {
+    description: "Grant business network administrators full access to system resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+/*
+ * The rules about Patient
+ */
+
+rule PatientReadTheirParticipantInfo {
+    description: "Patient can read their info in partipant"
+    participant (p): "org.uit.ehr.Patient"
+    operation: READ
+    resource (r): "org.uit.ehr.Patient"
+    condition: (p.getIdentifier() === r.getIdentifier())
+    action: ALLOW
+}
+
+rule PatientReadDoctorInfo {
+    description: "Patient can read doctor info if that patient is authorized"
+    participant(p): "org.uit.ehr.Patient"
+    operation: READ
+    resource(r): "org.uit.ehr.DoctorInformation"
+    condition: (r.authorizedPatients.some( function (patient){
+        return patient.getIdentifier() === p.getIdentifier()
+    }))
+    action: ALLOW
+}
+
+rule PatientReadInfo {
+    description: "Patient can read their info"
+    participant(p): "org.uit.ehr.Patient"
+    operation: READ, UPDATE
+    resource(r): "org.uit.ehr.PatientInformation"
+    condition: (p.getIdentifier() === r.owner.getIdentifier())
+    action: ALLOW
+}
+
+rule PatientCreateRequest {
+    description: "Patient can create read request"
+    participant: "org.uit.ehr.Patient"
+    operation: CREATE
+    resource: "org.uit.ehr.ReadRequest"
+    action: ALLOW
+}
+
+
+
+rule PatientReadFromRequest {
+    description: "Patient can see all request about them"
+    participant(p): "org.uit.ehr.Patient"
+    operation: READ, DELETE, UPDATE
+    resource(r): "org.uit.ehr.ReadRequest"
+    condition: ((p.getIdentifier() === r.owner.getIdentifier()) 
+    || p.getIdentifier() === r.resourceOwner.getIdentifier() )
+    action: ALLOW
+}
+
+rule PatientReadHealthRecord {
+    description: "Patient can read their health records"
+    participant(p): "org.uit.ehr.Patient"
+    operation: READ, UPDATE
+    resource(r): "org.uit.ehr.HealthRecord"
+    condition: (p.getIdentifier() === r.owner.getIdentifier())
+    action: ALLOW
+}
+/*
+ * The rules about doctor
+ */
+
+rule DoctorReadTheirParticipantInfo {
+    description: "Doctor can read their info in partipant"
+    participant (p): "org.uit.ehr.Doctor"
+    operation: READ
+    resource (r): "org.uit.ehr.Doctor"
+    condition: (p.getIdentifier() === r.getIdentifier())
+    action: ALLOW
+}
+
+
+rule DoctorReadInfo{
+    description: "Doctor can read doctorinfo"
+    participant (p): "org.uit.ehr.Doctor"
+    operation: READ, UPDATE
+    resource (r): "org.uit.ehr.DoctorInformation"
+    condition: (p.getIdentifier() === r.owner.getIdentifier())
+    action: ALLOW
+}
+
+rule DoctorCreateRequest {
+    description: "Doctor can create read request"
+    participant: "org.uit.ehr.Doctor"
+    operation: CREATE
+    resource: "org.uit.ehr.ReadRequest"
+    action: ALLOW
+}
+
+rule DoctorReadFromRequest {
+    description: "Doctor can see all request about them"
+    participant(p): "org.uit.ehr.Doctor"
+    operation: READ, DELETE, UPDATE
+    resource(r): "org.uit.ehr.ReadRequest"
+    condition: ((p.getIdentifier() === r.owner.getIdentifier()) 
+    || p.getIdentifier() === r.resourceOwner.getIdentifier() )
+    action: ALLOW
+}
+
+rule DoctorReadPatientInfo {
+    description: "Doctor can read patient or info if that patient is authorized"
+    participant(p): "org.uit.ehr.Doctor"
+    operation: READ
+    resource(r): "org.uit.ehr.PatientInformation"
+    condition: (r.authorizedDoctors.some( function (doctor){
+        return doctor.getIdentifier() === p.getIdentifier()
+    }))
+    action: ALLOW
+}
+
+rule DoctorCreateHealthRecord {
+    description: "Doctor can create a health record for their patient"
+    participant: "org.uit.ehr.Doctor"
+    operation: CREATE
+    resource: "org.uit.ehr.HealthRecord"
+    action: ALLOW
+}
+
+rule DoctorReadHealthRecord {
+    description: "Doctor can read patient's health record if they allow"
+    participant(p): "org.uit.ehr.Doctor"
+    operation: READ
+    resource(r): "org.uit.ehr.HealthRecord"
+    condition: (r.authorizedDoctors.some( function (doctor){
+        return doctor.getIdentifier() === p.getIdentifier()
+    }))
+    action: ALLOW
+}
+
